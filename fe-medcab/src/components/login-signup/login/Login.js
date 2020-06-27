@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { signUpStart } from '../../../actions/users/userAction';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
+import "../login/Login.styles.scss";
 
 
 
@@ -51,7 +52,7 @@ const onInputPassowrd = (e)=>{
 //   };
 
   return (
-<div >
+<div className="login_wrapper" >
  
   <form onSubmit={handleSubmit}>
       <input
