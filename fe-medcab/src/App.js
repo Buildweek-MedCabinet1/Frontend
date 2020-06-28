@@ -11,9 +11,11 @@ function App() {
   return (
 <Router>
    <div className="App">
-     <h1>Hello from App Component!</h1>
-     <Link className="link" to="/">Login/Signup</Link>
-     <a href='https://stoic-euler-9c6861.netlify.app/'>Home</a>
+     <div className="links">
+       <a className="link" href='https://stoic-euler-9c6861.netlify.app/'>Home</a>
+         <Link className="link" to="/">Login/Signup</Link>      
+     </div>
+  
      <Route exact path="/" component={LoginSignup}/>
       <PrivateRoute path="/protected" component={UserPage} />   
    </div>
