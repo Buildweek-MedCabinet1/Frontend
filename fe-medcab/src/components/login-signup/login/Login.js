@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 
 import { signUpStart } from '../../../actions/users/userAction';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
+import "../login/Login.styles.scss";
 
 
 
@@ -51,9 +51,11 @@ const onInputPassowrd = (e)=>{
 //   };
 
   return (
-<div >
- 
-  <form onSubmit={handleSubmit}>
+<div  >
+ <h2 className='members'>Members</h2>
+  <form className="login_wrapper" onSubmit={handleSubmit}>
+    
+    <h2>If you are already a member, login Here</h2>
       <input
         type='text'
         name='username'

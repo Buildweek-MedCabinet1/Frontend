@@ -5,12 +5,17 @@ import LoginSignup from '../src/components/login-signup/login-signup';
 import PrivateRoute from './components/PrivateRoute';
 import UserPage from './components/User/UserPage';
 
+import '../src/App.styles.scss'
+
 function App() {
   return (
 <Router>
    <div className="App">
-     <h1>Hello from App Component!</h1>
-     <Link className="link" to="/">Login/Signup</Link>
+     <div className="links">
+       <a className="link" href='https://stoic-euler-9c6861.netlify.app/'>Home</a>
+         <Link className="link" to="/">Login/Signup</Link>      
+     </div>
+  
      <Route exact path="/" component={LoginSignup}/>
       <PrivateRoute path="/protected" component={UserPage} />   
    </div>
