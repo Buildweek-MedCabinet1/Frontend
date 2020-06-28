@@ -30,7 +30,9 @@ const Login = ({ loginSuccess }) => {
                 localStorage.setItem('token', res.data.token)  
 
                   })
-            .catch(err => {console.log(err.response)})
+            .catch(err =>{console.log(err.response)
+            alert('Failed Login, please try again!')
+            })
             // props.history.push('/login')
     
         }
