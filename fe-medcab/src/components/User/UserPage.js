@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import "../../components/User/UserPage.styles.scss"
+import { Route, Switch } from "react-router-dom"
+import Favorites from './Favorites';
+import Strains from './Strains';
+import Strain from './Strain';
+
 
 const UserPage = () =>{
 
-    const [negative, setNegative] = useState([]);
-    const [positive, setPositive] = useState([]);
-    const [ailment, setAilment] = useState([]);
-    const [strain, setStrain] = useState([]);
+    // const [negative, setNegative] = useState([]);
+    // const [positive, setPositive] = useState([]);
+    // const [ailment, setAilment] = useState([]);
     // `http://medcabinet1flaskapi.herokuapp.com/${negative}/${positive}/${ailment}`
+    
 
-
-
+    const [strain, setStrain] = useState([]);
+    const [favoriteList, setFavoritesList] = useState([]);
     const getStrain = () =>{
         axios
         .get("https://medcab-backend-test.herokuapp.com/api/auth/strains")
@@ -20,9 +25,13 @@ const UserPage = () =>{
         .catch(err => console.log(err.response))
     }
 
-useEffect(()=>{
-    getStrain();
-},[])
+    const addToFavorites = strainName => {
+        setFavoritesList([...favoriteList, strainName])
+    }
+
+    useEffect(()=>{
+        getStrain();
+    },[])
 
 // const [dropDown, setDropdown] = useState("");
 
@@ -32,15 +41,25 @@ useEffect(()=>{
 // useEffect(()=>{
 //     getDropdown();
 // },[])
+
+
 console.log("Strain", strain)
     return(
         <div className= "form_wrapper">
-       <h1>Hello from UserPage</h1>
-    {strain.map(i => 
-        {return <div> <h5 className="strainNames"> Strain Name: {i.name} Strain Race:{i.race} </h5> <button>Add to Favorites</button></div>})}
-         
+            
+        <Favorites favorites={favoriteList} />
 
-         </div>
+            <Switch>
+                <Route path="/protected">
+                <Strains strains={strain} />  
+                </Route>
+
+                <Route path="/stains/:id">
+                    <Strain add={addToFavorites} strain={strain} />
+                </Route>        
+            </Switch>
+
+        </div>
     )
 }
 
