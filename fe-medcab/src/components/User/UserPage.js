@@ -7,7 +7,7 @@ import Strains from './Strains';
 import Strain from './Strain';
 
 
-const UserPage = () =>{
+const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching, favoriteList}) =>{
 
     // const [negative, setNegative] = useState([]);
     // const [positive, setPositive] = useState([]);
@@ -15,22 +15,24 @@ const UserPage = () =>{
     // `http://medcabinet1flaskapi.herokuapp.com/${negative}/${positive}/${ailment}`
     
 
-    const [strain, setStrain] = useState([]);
-    const [favoriteList, setFavoritesList] = useState([]);
+
+   
     const getStrain = () =>{
         axios
         .get("https://medcab-backend-test.herokuapp.com/api/auth/strains")
-        .then(res => setStrain(res.data)
+        .then(res => {       console.log(res)
+            setStrain(res.data)
+            setIsFetching(true)}
+            
+         
+ 
         )
         .catch(err => console.log(err.response))
     }
 
-    const addToFavorites = strainName => {
-        setFavoritesList([...favoriteList, strainName])
-    }
-
-    useEffect(()=>{
-        getStrain();
+   
+    useEffect(async ()=>{
+   const result = await getStrain();
     },[])
 
 // const [dropDown, setDropdown] = useState("");
@@ -41,23 +43,14 @@ const UserPage = () =>{
 // useEffect(()=>{
 //     getDropdown();
 // },[])
-
-
+console.log(isFetching)
+console.log(favoriteList)
 console.log("Strain", strain)
     return(
         <div className= "form_wrapper">
-            
+
         <Favorites favorites={favoriteList} />
-
-            <Switch>
-                <Route path="/protected">
-                <Strains strains={strain} />  
-                </Route>
-
-                <Route path="/stains/:id">
-                    <Strain add={addToFavorites} strain={strain} />
-                </Route>        
-            </Switch>
+        <Strains strains={strain} isFetching={isFetching} addToFavorites={addToFavorites} />          
 
         </div>
     )
