@@ -17,7 +17,7 @@ const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching,
 
 
    
-    const getStrain = () =>{
+   const getStrain = () =>{
         axios
         .get("https://medcab-backend-test.herokuapp.com/api/auth/strains")
         .then(res => {       console.log(res)
@@ -30,9 +30,8 @@ const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching,
         .catch(err => console.log(err.response))
     }
 
-   
-    useEffect(async ()=>{
-   const result = await getStrain();
+   useEffect(async ()=>{
+   getStrain();
     },[])
 
 // const [dropDown, setDropdown] = useState("");
@@ -48,10 +47,8 @@ console.log(favoriteList)
 console.log("Strain", strain)
     return(
         <div className= "form_wrapper">
-
-        <Favorites favorites={favoriteList} />
-        <Strains strains={strain} isFetching={isFetching} addToFavorites={addToFavorites} />          
-
+                <Favorites favorites={favoriteList} />
+                <Strains strains={strain} isFetching={isFetching} addToFavorites={addToFavorites} />       
         </div>
     )
 }
