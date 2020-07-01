@@ -5,14 +5,14 @@ import { useParams, useRouteMatch } from 'react-router-dom';
 
 const Strain = (props) =>{
 
-    const {addToFavorites, isFetching } = props.strain;
+    // const {addToFavorites, isFetching } = props.strain;
 
     const [strain, setStrain] = useState(null);
     const params = useParams();
 
-    const favoriteStrain = () =>{
-        addToFavorites(strain)
-    }
+    // const favoriteStrain = () =>{
+    //     addToFavorites(strain)
+    // }
 
     const getStrain =(id) => {
         Axios
@@ -36,12 +36,14 @@ const Strain = (props) =>{
         <div className = "strain-page">
 
             <div className="strain-name">  
+
+            {console.log(props.strain)}
              
                 <h2>
                 Strain Name: {strain.name} <br/> 
                 Strain Race: {strain.race}
                 </h2>
-                <button onClick={favoriteStrain}>Add to Favorites</button>
+                {/* <button onClick={favoriteStrain}>Add to Favorites</button> */}
             </div>
 
         </div>

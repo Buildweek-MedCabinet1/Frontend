@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom"
 import Favorites from './Favorites';
 import Strains from './Strains';
 import Strain from './Strain';
+import { getStrains } from '../../actions';
 
 
 const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching, favoriteList}) =>{
@@ -24,8 +25,6 @@ const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching,
             setStrain(res.data)
             setIsFetching(true)}
             
-         
- 
         )
         .catch(err => console.log(err.response))
     }

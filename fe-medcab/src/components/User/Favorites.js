@@ -1,19 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../../components/User/favorites.styles.scss"
+import Strain from './Strain';
+
 
 
 const Favorites = ({ favorites }) =>{
     console.log("favorites", favorites)
     return (
         <div className="favorites-list">
-            <h3> Your Favorites: </h3>
+            <h3> Your Favorites:  </h3>
             {favorites.map(strainName =>{
                 console.log({strainName})
                 return(
-                    <NavLink to={`/strains/${strainName.id}`} key={strainName.id} className="favorite-current">
-                       <span className="favorite-strain">{strainName.name}</span> 
-                    </NavLink>
+                    <Link to={`/strains/${strainName.id}`} key={strainName.id} className="favorite-current">
+                      <Strain />
+                    </Link>
                     
                 );
             })}
