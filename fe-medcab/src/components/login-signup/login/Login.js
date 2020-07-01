@@ -20,6 +20,7 @@ const Login = ({ loginSuccess }) => {
     // password !== confirmPassword? alert("passwords must match"): ""
     // loginSuccess(userCredentials);
 
+
     axiosWithAuth()
             .post('/login', {
                 username,
@@ -41,7 +42,7 @@ const Login = ({ loginSuccess }) => {
 const onInputUsername = (e)=>{
     setUsername(e.target.value)
 }
-const onInputPassowrd = (e)=>{
+const onInputPassword = (e)=>{
     setPassword(e.target.value)
 }
 //   const handleChange = event => {
@@ -71,7 +72,7 @@ const onInputPassowrd = (e)=>{
         type='password'
         name='password'
         value={password}
-        onChange={onInputPassowrd}
+        onChange={onInputPassword}
         label='Password'
         autoComplete='password'
         placeholder= "Password"
