@@ -16,12 +16,3 @@ const Favorites = ({ favorites }) =>{
                     <Link to={`/strains/${strainName.id}`} key={strainName.id} className="favorite-current">
                       <Strain />
                     </Link>
-                    
-                );
-            })}
-
-        </div>
-    )
-}
-
-export default Favorites;

@@ -43,11 +43,3 @@ const Strain = (props) =>{
                 Strain Name: {strain.name} <br/> 
                 Strain Race: {strain.race}
                 </h2>
-                {/* <button onClick={favoriteStrain}>Add to Favorites</button> */}
-            </div>
-
-        </div>
-    )
-}
-
-export default Strain;
