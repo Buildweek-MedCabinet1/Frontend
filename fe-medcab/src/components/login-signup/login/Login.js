@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 
 import { signUpStart } from '../../../actions/users/userAction';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
+import "../login/Login.styles.scss";
 
 
 
@@ -20,6 +20,7 @@ const Login = ({ loginSuccess }) => {
     // password !== confirmPassword? alert("passwords must match"): ""
     // loginSuccess(userCredentials);
 
+
     axiosWithAuth()
             .post('/login', {
                 username,
@@ -30,7 +31,9 @@ const Login = ({ loginSuccess }) => {
                 localStorage.setItem('token', res.data.token)  
 
                   })
-            .catch(err => {console.log(err.response)})
+            .catch(err =>{console.log(err.response)
+            alert('Failed Login, please try again!')
+            })
             // props.history.push('/login')
     
         }
@@ -39,7 +42,7 @@ const Login = ({ loginSuccess }) => {
 const onInputUsername = (e)=>{
     setUsername(e.target.value)
 }
-const onInputPassowrd = (e)=>{
+const onInputPassword = (e)=>{
     setPassword(e.target.value)
 }
 //   const handleChange = event => {
@@ -51,9 +54,11 @@ const onInputPassowrd = (e)=>{
 //   };
 
   return (
-<div >
- 
-  <form onSubmit={handleSubmit}>
+<div  >
+ <h2 className='members'>Members</h2>
+  <form className="login_wrapper" onSubmit={handleSubmit}>
+    
+    <h2>If you are already a member, login Here</h2>
       <input
         type='text'
         name='username'
@@ -67,7 +72,7 @@ const onInputPassowrd = (e)=>{
         type='password'
         name='password'
         value={password}
-        onChange={onInputPassowrd}
+        onChange={onInputPassword}
         label='Password'
         autoComplete='password'
         placeholder= "Password"

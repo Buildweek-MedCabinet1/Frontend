@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { signUpStart } from '../../../actions/users/userAction';
 
+import "../../login-signup/signup/signup.styles.scss"
 
 const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUserCredentials] = useState({
@@ -16,6 +17,8 @@ const SignUp = ({ signUpStart }) => {
     // password !== confirmPassword? alert("passwords must match"): ""
     signUpStart(userCredentials);
 
+    alert("You are now a new user! Sign in!")
+
   };
 
   const handleChange = event => {
@@ -28,9 +31,9 @@ const SignUp = ({ signUpStart }) => {
 
   return (
 <div className="signup-wrapper">
-  <h1>I do not have an account</h1>
-  <span>Sign up with your User Name and password</span>
+  <h2 className="no_account">I do not have an account</h2>  
   <form className='sign-up-form' onSubmit={handleSubmit}>
+    <h2>Sign up with your User Name and password</h2>
       <input
         type='text'
         name='username'
@@ -55,8 +58,8 @@ const SignUp = ({ signUpStart }) => {
   </form>
 </div>
 );
-};
+  }
 
 export default connect(
   null,
-{signUpStart})(SignUp);
+{signUpStart})(SignUp)
