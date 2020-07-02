@@ -13,6 +13,7 @@ const Favorites = ({ favorites }) =>{
             {favorites.map(strainName =>{
                 console.log({strainName})
                 return(
+
                     <h4>{strainName.name}</h4>
                     // <Link to={`/strains/${strainName.id}`} key={strainName.id} className="favorite-current">
                       /* <Strain /> */
@@ -26,3 +27,4 @@ const Favorites = ({ favorites }) =>{
 }
 
 export default Favorites;
+
