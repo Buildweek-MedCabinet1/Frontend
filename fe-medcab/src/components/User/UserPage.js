@@ -21,6 +21,7 @@ const UserPage = ({addToFavorites, strain, setStrain, isFetching, setIsFetching,
    const getStrain = () =>{
         axios
         .get("https://medcab-backend-test.herokuapp.com/api/auth/strains")
+        // .get('https://cors-anywhere.herokuapp.com/http://medcabinet1flaskapi.herokuapp.com')
         .then(res => {       console.log(res)
             setStrain(res.data)
             setIsFetching(true)}
