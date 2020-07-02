@@ -43,3 +43,7 @@ const Strain = (props) =>{
                 Strain Name: {strain.name} <br/> 
                 Strain Race: {strain.race}
                 </h2>
+                </div>
+                </div>
+                )}
+export default Strain;
